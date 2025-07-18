@@ -4,7 +4,6 @@ import numpy as np
 from datetime import datetime, timedelta
 import hashlib
 import random
-# import google.generativeai as genai  # No longer needed for embeddings
 import base64
 from sentence_transformers import SentenceTransformer
 
@@ -15,9 +14,6 @@ st_model = SentenceTransformer('all-MiniLM-L6-v2')
 redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
 # Binary Redis client for vector storage
 redis_client_bin = redis.Redis(host='localhost', port=6379, decode_responses=False)
-
-# Configure Gemini (add your API key)
-# genai.configure(api_key="AIzaSyCeDD6d7IZMm8e5_IbKJAIY_GiPx3BHXnU") # No longer needed for embeddings
 
 
 def populate_bloated_memory():
