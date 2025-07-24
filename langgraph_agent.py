@@ -353,7 +353,7 @@ graph.add_edge("FinalLLM", "StoreMessage")
 graph.add_edge("StoreMessage", "UserInput")  # Loop for next turn
 graph.set_entry_point("UserInput")  # Set entry point
 
-app = graph.compile()
+app = graph.compile(recursion_limit=100)  # Increased from default 25 to 100
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run LangGraph agent in single-turn or continuous mode.")
