@@ -368,9 +368,9 @@ if __name__ == "__main__":
     session_thread_id = f"conversation_{uuid.uuid4().hex[:8]}"
     state = {'thread_id': session_thread_id}
     if args.single_turn:
-        state = app.invoke(state)
+        state = app.invoke(state, config={"recursion_limit": 100})
         print(f"[Agent exited after single turn. Thread ID: {state.get('thread_id', 'N/A')}]" )
     else:
         while True:
-            state = app.invoke(state)
+            state = app.invoke(state, config={"recursion_limit": 100})
             print(f"[Current thread_id: {state.get('thread_id', 'N/A')}]" ) 
